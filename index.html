@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Wishes</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #f8bbd0, #b3e5fc, #ffffff);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      color: #333;
+    }
+    .page {
+      display: none;
+      padding: 60px 20px;
+    }
+    .page.active {
+      display: block;
+    }
+    h1, h2 {
+      font-size: 2.5rem;
+    }
+    .birthday-image {
+      width: 80%;
+     max-width: 500px;
+     display: block;
+     margin: 20px auto;
+     border-radius: 20px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+     animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff4081;
+      color: white;
+    }
+    #countdown {
+      font-size: 80px;
+      color: white;
+      animation: pop 1s ease-in-out infinite;
+    }
+    #finalPage p {
+     text-align: center;
+     font-size: 22px;
+     padding: 20px;
+     color: #fff;
+     line-height: 1.6;
+     max-width: 800px;
+     margin: auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+    }
+    @keyframes pop {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page 1 -->
+  <div id="firstPage" class="page active">
+    <h1>Hey 👋🏻😁 Thambii....</h1>
+    <button onclick="goToSecondPage()">Next</button>
+  </div>  <!-- Page 2 -->  <div id="secondPage" class="page">
+    <h2>🎉 Surprise! 🎁🎂</h2>
+    <img src="image.png" alt="Birthday Scene" class="birthday-image" />
+    <br>
+    <button onclick="showCountdownPage()">Next</button>
+  </div>  <!-- Countdown Page -->  <div id="countdownPage" class="page">
+    <p id="countdown">3</p>
+  </div>  <!-- Final Page -->  <div id="finalPage" class="page">
+    <h2>🎉❤️🌍🤗 Happy Birthday Thangameyy! 🎉❤️🌍🤗</h2>
+    <p style="max-width: 600px; margin: auto;">
+      May your birthday be filled with love, laughter, and everything that makes you happy. You deserve all the best, brother!<br><br>
+      May this year bring you even more success and happiness, and may our bond continue to grow stronger with each passing year.<br><br>
+      I have so many names for you. I have so many things to share. Sometimes I do fight with you, but you know I also care. It's a strange relationship we share because we are connected by heart. Brother, love you a lot. Happy Birthday to you!
+    </p>
+    <audio controls autoplay loop>
+      <source src="Kallaliye Kallaliye.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>  <script>
+    function goToSecondPage() {
+      document.getElementById('firstPage').classList.remove('active');
+      document.getElementById('secondPage').classList.add('active');
+    }
+
+    function showCountdownPage() {
+      document.getElementById('secondPage').classList.remove('active');
+      document.getElementById('countdownPage').classList.add('active');
+      let count = 3;
+      const countdownElement = document.getElementById('countdown');
+      const timer = setInterval(() => {
+        count--;
+        if (count === 0) {
+          clearInterval(timer);
+          showFinalWishPage();
+        } else {
+          countdownElement.textContent = count;
+        }
+      }, 1000);
+    }
+
+    function showFinalWishPage() {
+      document.getElementById('countdownPage').classList.remove('active');
+      document.getElementById('finalPage').classList.add('active');
+    }
+  </script></body>
+</html>
